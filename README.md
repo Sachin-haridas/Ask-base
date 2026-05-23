@@ -75,9 +75,9 @@ The following query categories have been tested against a sample e-commerce data
 | GROUP BY + HAVING | show customers who ordered more than 3 products | ✅ Works |
 | Multi-table analytics | show top 5 customers by total spending | ✅ Works |
 | Time-based | show monthly revenue trends | ✅ Works |
-| Subquery | show most expensive product ordered by each customer | 🔄 Repair loop |
-| Window functions | rank customers by spending within each city | 🔄 Repair loop |
-| Complex analytics | show month over month revenue growth | ❌ Needs improvement |
+| Subquery | show most expensive product ordered by each customer | ✅ Works |
+| Window functions | rank customers by spending within each city | ✅ Works |
+| Complex analytics | show month over month revenue growth | ✅ Works |
 
 ✅ Direct — generated and executed correctly on first attempt
 🔄 Repair loop — failed initially, automatically repaired and executed
