@@ -17,7 +17,7 @@ genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 def generate_embedding(text: str) -> list:
     response = genai.embed_content(
         model="models/text-embedding-004",
-        input=text
+        content=text
     )
     return response["embedding"]
 
