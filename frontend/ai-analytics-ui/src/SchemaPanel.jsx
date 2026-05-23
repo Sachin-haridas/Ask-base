@@ -13,7 +13,7 @@ function SchemaPanel() {
 
   async function fetchSchema() {
     try {
-      const response = await fetch("http://localhost:8000/schema")
+      const response = await fetch("https://ask-base.onrender.com/schema")
       const data = await response.json()
       setSchema(data.schema)
 
