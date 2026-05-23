@@ -2,25 +2,19 @@ from core.database import get_db_connection
 import json
 import math
 import os
-import google.generativeai as genai
+from google import genai
 from dotenv import load_dotenv
 
 load_dotenv()
 
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
-
-# ─────────────────────────────────────────────
-# EMBEDDING — uses Groq API instead of local model
-# No torch, no sentence-transformers, no RAM issues
-# ─────────────────────────────────────────────
+client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
 
 def generate_embedding(text: str) -> list:
-    response = genai.embed_content(
-        model="models/text-embedding-004",
-        content=text
+    result = client.models.embed_content(
+        model="text-embedding-004",
+        contents=text
     )
-    return response["embedding"]
-
+    return result.embeddings[0].values
 
 # ─────────────────────────────────────────────
 # COSINE SIMILARITY — pure python, no torch needed

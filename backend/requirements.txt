@@ -5,4 +5,4 @@ python-dotenv
 pydantic
 groq
 sqlalchemy
-google-generativeai
+google-genai
