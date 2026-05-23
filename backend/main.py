@@ -21,12 +21,14 @@ from ai.sql_generator import (
 
 app = FastAPI()
 
+
+
 from fastapi.middleware.cors import CORSMiddleware
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173",
-                  "https://ask-base-five.vercel.app"],
+    allow_origins=["*"],  # temporarily allow all origins
+    allow_credentials=False,  # must be False when allow_origins=["*"]
     allow_methods=["*"],
     allow_headers=["*"],
 )
