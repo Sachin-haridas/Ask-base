@@ -2,13 +2,12 @@ from core.database import get_db_connection
 import json
 import math
 import os
-from openai import OpenAI
+import google.generativeai as genai
 from dotenv import load_dotenv
 
 load_dotenv()
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 # ─────────────────────────────────────────────
 # EMBEDDING — uses Groq API instead of local model
@@ -16,11 +15,11 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 # ─────────────────────────────────────────────
 
 def generate_embedding(text: str) -> list:
-    response = client.embeddings.create(
-        model="text-embedding-3-small",
+    response = genai.embeddings.create(
+        model="models/text-embedding-004",
         input=text
     )
-    return response.data[0].embedding
+    return response["embedding"]
 
 
 # ─────────────────────────────────────────────
