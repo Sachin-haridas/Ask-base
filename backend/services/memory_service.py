@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
+client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"),http_options={"api_version": "v1"})
 
 def generate_embedding(text: str) -> list:
     result = client.models.embed_content(
