@@ -2,12 +2,12 @@ from core.database import get_db_connection
 import json
 import math
 import os
-from groq import Groq
+from openai import OpenAI
 from dotenv import load_dotenv
 
 load_dotenv()
 
-client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
 # ─────────────────────────────────────────────
@@ -17,7 +17,7 @@ client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 def generate_embedding(text: str) -> list:
     response = client.embeddings.create(
-        model="nomic-embed-text-v1_5",
+        model="text-embedding-3-small",
         input=text
     )
     return response.data[0].embedding
